@@ -18,10 +18,9 @@ dam.loc.df <- read.csv(paste0(here(),"/data/dam locations.csv")) %>%
 dam.loc.sf <- dam.loc.df %>% 
   st_as_sf(.,coords=c("lon","lat"),crs=4326)
 
-me.centroid <- states.temp %>%    
-  sf::st_centroid() %>% 
-  sf::st_coordinates() %>% 
-  as.data.frame() %>% 
+me.centroid <- data.frame(
+  X = -68.7716675,
+  Y = 44.8013268) %>% 
   dplyr::select(lon = X, lat = Y)
 
 
@@ -52,8 +51,12 @@ server <- function(input, output, session){
     trap.filter <- input$trap
     
     if(input$noalewife == FALSE){
-      fishcnt.plotinput.df <- fishcnt.recent.df %>% 
-        filter(!spp == "River Herring")
+      
+      # base R, change cnt values for spp that == river heering
+      fishcnt.recent.df$cnt[fishcnt.recent.df$spp == "River Herring"] <- 0
+      
+      fishcnt.plotinput.df <- fishcnt.recent.df
+      
     }else{fishcnt.plotinput.df <- fishcnt.recent.df}
     
     ggplot(data = fishcnt.plotinput.df %>% 

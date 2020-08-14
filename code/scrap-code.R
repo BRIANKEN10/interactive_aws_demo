@@ -48,6 +48,14 @@ leaflet() %>%
 # BASIC CHART
 
 
+fishcnt.recent.df$cnt[fishcnt.recent.df$spp == "River Herring"] <- 0
+
+
+
+if(fishcnt.recent.df$spp[fishcnt.recent.df$spp == "River Herring"]){
+  fishcnt.recent.df$cnt
+
+
 
 if(input$noalewife == FALSE){filter(!spp == "River Herring")}
 
