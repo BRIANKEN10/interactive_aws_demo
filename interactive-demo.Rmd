@@ -9,6 +9,7 @@ library(shiny)
 library(tidyverse)
 library(here)
 library(leaflet)
+library(kableExtra)
 library(sf)
 
 ```
@@ -20,13 +21,21 @@ Eventually, I hope to build out an app that monitors fish counts for sea run fis
 
 ## This is a markdown document! 
 
-We can do all fun markdown stuff in it
+We can do all fun markdown stuff in it like write text, show code chunks, and make html tables:
 
 ```{r random content}
 
-2 + 2 = b
+2 + 2 
 
-b
+
+brian.df <- data.frame(
+  important.person = "brian"
+)
+
+kableExtra::kable(brian.df,
+                  col.names = c("People of Import")) %>% 
+  kable_styling()
+
 
 ```
 
@@ -34,7 +43,7 @@ b
 
 embedding is simple although sometimes of glitchy...the code below works in the context of sourcing multiple apps from different directories. 
 
-```{r shiny app, echo=FALSE, warning=FALSE, message=FALSE}
+```{r shiny app, warning=FALSE, message=FALSE}
 
 shinyAppFile(
   paste0(here(),"/app/app.R"),
