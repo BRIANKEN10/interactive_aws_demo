@@ -18,6 +18,22 @@ library(sf)
 
 Eventually, I hope to build out an app that monitors fish counts for sea run fish in Maine. Below is an extremely rough draft of such an app. 
 
+## This is a markdown document! 
+
+We can do all fun markdown stuff in it
+
+```{r random content}
+
+2 + 2 = b
+
+b
+
+```
+
+## We can also embed shiny apps like the one below
+
+embedding is simple although sometimes of glitchy...the code below works in the context of sourcing multiple apps from different directories. 
+
 ```{r shiny app, echo=FALSE, warning=FALSE, message=FALSE}
 
 shinyAppFile(
